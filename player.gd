@@ -1,6 +1,10 @@
 extends KinematicBody2D
 export var move_speed=250
 export var stop_distance=20
+
+const bullet_path=preload("res://bullet.tscn")
+
+
 func _process(delta):
 	look_to_mouse()
 	move_to_mouse()
@@ -8,6 +12,8 @@ func _process(delta):
 func look_to_mouse():
 	look_at(get_global_mouse_position())
 	rotation_degrees=rotation_degrees+90
+	
+	
 func move_to_mouse():
 	if position.distance_to(get_global_mouse_position())>stop_distance:
 		var direction =get_global_mouse_position()-position
